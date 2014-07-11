@@ -6,17 +6,17 @@ This instruction file shows how to make c++ file and Ruby file directly executab
 
 - Make sure that compiler for c++ is installed and working well on your system.
 - Write following c++ code in a file and save it as hello_cpp.cpp
-      #include <iostream>  //libraries found at /usr/inculde/c++/4.8
-      #include <cstdlib>
+        #include <iostream>  //libraries found at /usr/inculde/c++/4.8
+        #include <cstdlib>
         int sum(char  n1[],char n2[]);
         int main(int c,char* arry[]) //varient of main that accepts command line argument, c,first parameter is count of passed argument. arry is array of arguments,first argument is file name it self at arry[0]
-        {
+         {
             using namespace std; // uses std ~standard namspace defined in all included files
 	        cout <<"sum is the "<<sum(arry[1],arry[2]) <<"\n"; //prints answer
             return 0; //  main() return
-        }
+         }
 
-        int sum(char n1[],char n2[])
+         int sum(char n1[],char n2[])
         {
 	        int num1=atoi(n1); //function of cstdlib that converts string to number
 	        int num2=atoi(n2);//cstdlib is directly linked to stdlib.h of gcc.
