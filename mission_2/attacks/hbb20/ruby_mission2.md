@@ -11,7 +11,7 @@ Ruby mission 2
 - Recursive function calls to self (logically) but  for memory allocator its ultimately a 'another' function which is called. So now Activation Record is created for new function with its parameter,variable values and return point (where to return after work is done). Such Activation record is stacked up. The new Activation Record (and so memory occupied) is created each time when function call occurs. If the 'n' is larger, it may create a big stack which occupy memory beyond available memory.
 - Iterative function use same variable through out execution. Instead of creating "new" variable with fresh memory, it over write the previously used variable. So it saves space.
 
-**C. Applicability **
+**C. Applicability**
 - Both approaches are applicable to most of problem. 
 - Recursion is much useful for non-linear data structure i.e tree. and its better to use Iterative approach for liner problems i.e Factorial,  Fibonacci.
 - There are some problems where "backtracking" of value is required. Iteration approach is not applicable for such problems because it over write the variable so it losses original value. So Recursion approach is useful as it contains separate Activation Record for each call. 
