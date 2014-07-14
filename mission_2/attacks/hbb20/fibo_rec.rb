@@ -1,55 +1,47 @@
-BEGIN { #prints message in starting
-	puts "Good morning, this program will give you Fibonacci number"
-	puts "Enter +ve numeric value of 'n'th position to get Fibonacci number"
-	puts "Enter -ve value to exit \n\n"
-}
+require './fibo_new_common.rb'
 
-$fibo_arry=[]
-def is_num(input_value) #Checks if 
-	is_a_num = Regexp.new("^[-+]?[0-9]\d*\.?[0]*$") #creates a regexp object that validate integer
-	if input_value =~ is_a_num   #compare incoming value with integer regular expression
-			return input_value.to_i
-	else
-		return "invalid"
-		
-	end
-end
+#def --> fibo_rec
+#This function accepts positive integer 
+#it calculate the and fill up the series[] with fibonacci numbers
+#and finally returns series[]
+$series =Array.new # global varible so that each recursion can use same one
+def fibo_rec(target_number)
+  if target_number<1
+	$series[0]=0
+    return 0
+ 
+  elsif target_number=1
+  	$series[1]=1
+  	fibo_rec 0
+    return 1
 
-def fibo_rec(n)
-	if n==0
-		$fibo_arry[n]=n
-		return 0
-
-	elsif n==1 
-		$fibo_arry[n]=n
-		return 1
-	else
-		ans=fibo_rec(n-1)+(fibo_rec(n-2))	
-		$fibo_arry[n]=ans
+  else
+		ans=fibo_rec(target_number-1)+(fibo_rec(target_number-2))	
+		$series[target_number]=ans
 		return ans
 	end
-end		
-	
-def print_array(n)
-	puts "entered in printing"
-	(0...n+1).each do |i|
-		puts "#{i}-->#{$fibo_arry[i]}"
-	end
+	return $series
 end		
 
+
+#Entry point of file which ask to enter target value until user wishes to exit
+puts "Fibonacci series by recursion"
+series_local = Array.new
 while true do
-		print "\nEnter a value:"
-		n = gets
-		_way=is_num(n)
+  target_number=get_target_number
+  if target_number == nil
+	print "Invalid input! Enter integer value only."
 
-		if _way=="invalid" then
-			puts "Invalid Input"
-		elsif _way>=0
-			fibo_value_by_recursive=fibo_rec(_way)
-			print_array(_way)
-			puts "Fibonacco value found by recursive is #{fibo_value_by_recursive}"
-		else 
-			puts "Good Bye!!"
-			exit
-		end	
+  elsif target_number<0
+	print "See you soon!! Bye!!\n"
+	exit
+  else
+	$series.clear
+	series_local.clear
+	fibo_rec(target_number) 
+	$series.each do |i|
+	  series_local.push(i)
+	end
+	  print_output(series_local)
+  end
 end

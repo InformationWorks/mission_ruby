@@ -1,55 +1,53 @@
-BEGIN { #prints message in starting
-	puts "Good morning, this program will give you funkonacci number"
-	puts "Enter +ve numeric value of 'n'th position to get funknacci number"
-	puts "Enter -ve value to exit \n\n"
-}
+require './fibo_new_common.rb'
 
-$funk_arry=[]
-def is_num(input_value) #Checks if 
-	is_a_num = Regexp.new("^[-+]?[0-9]\d*\.?[0]*$") #creates a regexp object that validate integer
-	if input_value =~ is_a_num   #compare incoming value with integer regular expression
-			return input_value.to_i
-	else
-		return "invalid"
-		
-	end
-end
-
-def funk_rec(n)
-	if n==0
-		$funk_arry[n]=n
-		return 0
-
-	elsif n==1 
-		$funk_arry[n]=n
-		return 1
-	else
-		ans=funk_rec(n-1)-(2*funk_rec(n-2))	
-		$funk_arry[n]=ans
+#def --> fibo_rec
+#This function accepts positive integer
+#Funkonacci Numbers!
+#
+#funk(n) = 0 if n < 1
+#funk(n) = 1 if n = 1
+#funk(n) = funk(n - 1) - (2 × funk(n - 2)) otherwise 
+#
+#it calculate the and fill up the series[] with funkonacci numbers
+#and finally returns series[]
+$series =Array.new # global varible so that each recursion can use same one
+def funk_rec(target_number)
+  if target_number<1
+	$series[0]=0
+    return 0
+ 
+  elsif target_number=1
+  	$series[1]=1
+  	funk_rec 0
+    return 1
+  	
+  else
+		ans=funk_rec(target_number-1)-2*(funk_rec(target_number-2))	
+		$series[target_number]=ans
 		return ans
 	end
-end		
-	
-def print_array(n)
-	puts "entered in printing"
-	(0...n+1).each do |i|
-		puts "#{i}-->#{$funk_arry[i]}"
-	end
+	return $series
 end		
 
+
+#Entry point of file which ask to enter target value until user wishes to exit
+puts "Funkonacci series by recursion"
+series_local = Array.new
 while true do
-		print "\nEnter a value:"
-		n = gets
-		_way=is_num(n)
+  target_number=get_target_number
+  if target_number == nil
+	print "Invalid input! Enter integer value only."
 
-		if _way=="invalid" then
-			puts "Invalid Input"
-		elsif _way>=0
-			funk_value_by_recursive=funk_rec(_way)
-			print_array(_way)
-			puts "funknacco value found by recursive is #{funk_value_by_recursive}"
-		else 
-			puts "Good Bye!!"
-			exit
-		end	
+  elsif target_number<0
+	print "See you soon!! Bye!!\n"
+	exit
+  else
+	$series.clear
+	series_local.clear
+	funk_rec(target_number) 
+	$series.each do |i|
+	  series_local.push(i)
+	end
+	print_output(series_local)
+  end
 end

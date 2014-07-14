@@ -19,7 +19,9 @@ Ruby mission 2
 ##Try to print the series from within the fibo(n) & fibo_rec(n) functions and document your findings.##
 ----
 -As Fibonacci problem is linear ,its straight forward to print series using fibo(n). At the end of one iteration, we have one Fibonacci number, simply print it before that value is over written by program. 
-- It took more effort to write series from fibo_rec(n). unlike printing Fibonacci value per iteration in iterative approach, we can not print Fibonacci value per Activation Record. The reason is there are many Activation records which contain same parameter values. So an array was maintained, each Activation Record was writing/Over-writing 'n' th Fibonacci value on 'n' th index of array. Finally Array was printed, which contains 'n' Fibonacci values. 
+-For fibo_rec() and funk_rec() functions there are two options:
+- 1. To call funk_rec() for 0..n and print result after each iteration. In this approach, function calls will be multiplied so many times. But it will give accurate answer which is not case with another option.
+- 2. To maintain a global_variable (array) which I have implemented.unlike printing Fibonacci value per iteration in iterative approach, we can not print Fibonacci value per Activation Record. The reason is there are many Activation records which contain same parameter values. So an global array was maintained, each Activation Record was writing/Over-writing 'n' th Fibonacci value on 'n' th index of array. Finally Array was printed, which contains 'n' Fibonacci values. In this option function will be called very less time than above option. acll  but drawback with this approach is , if some code cause change in the value of Global variable, this code get failed.
 
 ## Identify and explain the image at the top.##
 ----
