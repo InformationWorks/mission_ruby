@@ -1,0 +1,40 @@
+1:
+  book_name: "Meluha :Shiva"
+  author_name: "Amisha Pathi"
+  issued_to: 4
+2:
+  book_name: "Oath ,A value"
+  author_name: "Amisha Pathi"
+  issued_to: -1
+3:
+  book_name: "Had love story"
+  author_name: "Ravi Shingh"
+  issued_to: 2
+4:
+  book_name: "Nagas :Shiva"
+  author_name: "Amisha Pathi"
+  issued_to: 6
+5:
+  book_name: "2 states"
+  author_name: "Chetan Bhagat"
+  issued_to: 3
+6:
+  book_name: "Revolution '20"
+  author_name: "Chetan Bhagat"
+  issued_to: 2
+7:
+  book_name: "3 mistakes"
+  author_name: "Chetan Bhagat"
+  issued_to: -1
+8:
+  book_name: "Antar no Ujas"
+  author_name: "Vijaliwala"
+  issued_to: 1
+9:
+  book_name: "Faith a life"
+  author_name: "Kishan Acharya"
+  issued_to: 5
+10:
+  book_name: "System On site"
+  author_name: "Devid ham"
+  issued_to: 3
